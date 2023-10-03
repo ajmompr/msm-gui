@@ -2,10 +2,17 @@
   Movie #<%= @the_movie.id %> details
 </h1>
 
-<a href="/movies">
-  Go back
-</a>
+<div>
+  <a href="/movies">
+    Go back
+  </a>
+</div>
 
+<div>
+  <a href="/delete_movie/<%= @the_movie.id%>"> 
+    Delete Movie
+  </a>
+</div>
 <hr>
 
 <dl>

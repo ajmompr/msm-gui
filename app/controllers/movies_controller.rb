@@ -1,4 +1,18 @@
 class MoviesController < ApplicationController
+  def destroy
+     # Retrieve the Movie ID value
+     the_id = params.fetch("an_id")
+     # Search the ID column for matching relation
+     matching_records = Movie.where( :id => the_id)
+     # Take the first element out of the relation
+     the_movie = matching_records.at(0)
+     # Delete the record
+     the_movie.destroy
+
+      # Redirects to /movies URL
+      redirect_to("/movies")
+  end
+
   def create
     # Create a record in movie table
     m = Movie.new
