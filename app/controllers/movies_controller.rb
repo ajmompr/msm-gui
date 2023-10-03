@@ -1,4 +1,23 @@
 class MoviesController < ApplicationController
+  def create
+    # Create a record in movie table
+    m = Movie.new
+
+    # Retrieve user input from params
+    m.title = params.fetch("query_title")
+    m.year = params.fetch("query_year")
+    m.duration = params.fetch("query_duration")
+    m.description = params.fetch("query_description")
+    m.image = params.fetch("query_image")
+    m.director_id = params.fetch("query_director_id")
+
+    # Save
+    m.save
+    # Redirect to /movies URL 
+    redirect_to("/movies")
+
+  end
+
   def index
     matching_movies = Movie.all
     @list_of_movies = matching_movies.order({ :created_at => :desc })

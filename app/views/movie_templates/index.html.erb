@@ -4,6 +4,45 @@
 
 <hr>
 
+<form action="/insert_movie_record" method="post">
+  <div>
+    <label for="title_field"> Title </label>
+    <input id="title_field" name="query_title" type="text">
+  </div>
+
+  <div>
+    <label for="year_field"> Year </label>
+    <input id="year_field" name="query_year" type="text">
+  </div>
+
+  <div>
+    <label for="duration_field"> Duration </label>
+    <input id="duration_field" name="query_duration" type="text">
+  </div>
+
+  <div>
+    <label for="description_field"> Description </label>
+    <textarea id="description_field" name="query_description" rows="3"></textarea>
+  </div>
+
+  <div>
+    <label for="img_field"> Image </label>
+    <input id="img_field" name="query_image" type="text">
+  </div>
+
+  <div>
+    <label for="director_id_field"> Director ID </label>
+    <input id="director_id_field" name="query_director_id" type="text">
+  </div>
+
+  <button type="submit">
+    Create movie
+  </button>
+  
+</form>
+
+<hr>
+
 <table border="1">
   <tr>
     <th>
@@ -53,7 +92,11 @@
       
       <% the_director = matching_directors.at(0) %>
 
-      <%= the_director.name %>
+      <% if the_director == nil %>
+        Uh oh! We weren't able to find a director for this movie.
+      <% else %>
+        <%= the_director.name %>
+      <% end %>
     </td>
 
     <td>
