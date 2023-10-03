@@ -1,4 +1,19 @@
 class DirectorsController < ApplicationController
+  def destroy
+    # Retrieve the Director ID value
+    the_id = params.fetch("an_id")
+
+    # Search the ID column for matching relation
+    matching_records = Director.where({ :id => the_id})
+    # Take the first element out of the relation
+    the_director = matching_records.at(0)
+    # Delete the record
+    the_director.destroy
+
+    # Redirects to /directors URL
+    redirect_to("/directors")
+  end
+
   def create
     # Create a record in director table
     d = Director.new
