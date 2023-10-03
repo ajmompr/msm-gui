@@ -4,6 +4,34 @@
 
 <hr>
 
+<form action="/insert_actor_record" method="post">
+  <div>
+    <label for="name_field"> Name </label>
+    <input id="name_field" name="query_name" type="text">
+  </div>
+
+  <div>
+    <label for="dob_field"> Dob </label>
+    <input id="dob_field" name="query_dob" type="date">
+  </div>
+
+  <div>
+    <label for="bio_field"> Bio </label>
+    <textarea id="bio_field" name="query_bio" rows="3"></textarea>
+  </div>
+
+  <div>
+    <label for="img_field"> Image </label>
+    <input id="img_field" name="query_image" type="text">
+  </div>
+
+  <button> 
+    Create actor
+  </button>
+</form>
+
+<hr>
+
 <table border="1">
   <tr>
     <th>
