@@ -1,4 +1,18 @@
 class ActorsController < ApplicationController
+  def destroy
+    # Retreive the actor ID
+    the_id = params.fetch("an_id")
+    # Find the matching relation based on the actor ID
+    matching_records = Actor.where( :id => the_id)
+    # Pop-out the matching actor row
+    the_actor = matching_records.at(0)
+    # Destroy the actor row
+    the_actor.destroy
+
+    # Redirect to /actors URL
+    redirect_to("/actors")
+  end
+
   def create
      # Create a new actor record
      a = Actor.new
