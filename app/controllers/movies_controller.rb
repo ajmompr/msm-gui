@@ -1,4 +1,25 @@
 class MoviesController < ApplicationController
+  def update
+    # Retrieve the movie ID
+    movie_id = params.fetch("an_id")
+    # Find matching relation
+    matching_records = Movie.where( :id => movie_id)
+    # Pop the first relation out
+    the_movie = matching_records.at(0)
+    # Overwrite the values
+    the_movie.title = params.fetch("query_title")
+    the_movie.year = params.fetch("query_year")
+    the_movie.duration = params.fetch("query_duration")
+    the_movie.description = params.fetch("query_description")
+    the_movie.image = params.fetch("query_img")
+    the_movie.director_id = params.fetch("query_director_id")
+    # Save
+    the_movie.save
+    # Redirect to movie details URL
+    redirect_to("/movies/#{the_movie.id}")
+
+  end
+
   def destroy
      # Retrieve the Movie ID value
      the_id = params.fetch("an_id")
