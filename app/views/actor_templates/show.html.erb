@@ -16,6 +16,36 @@
 
 <hr>
 
+<form action="/modify_actor_record/<%= @the_actor.id %>" method="post">
+
+<div>
+  <label for="name_box"> Name </label>
+  <input id="name_box" name="query_name" type="text" value="<%= @the_actor.name %>">
+</div>
+
+<div>
+  <label for="dob_box"> Dob </label>
+  <input id="dob_box" name="query_dob" type="date" value="<%= @the_actor.dob %>">
+</div>
+
+<div>
+  <label for="bio_box"> Bio </label>
+  <textarea id="bio_box" name="query_bio" rows="3"><%= @the_actor.bio %>
+  </textarea>
+</div>
+
+<div>
+  <label for="img_box"> Image</label>
+  <input id="img_box" name="query_image" type="text" value="<%= @the_actor.image %>">
+</div>
+
+  <button>
+    Update actor
+  </button>
+</form>
+
+<hr>
+
 <dl>
   <dt>
     Name
@@ -113,7 +143,11 @@
         
         <% the_director = matching_directors.at(0) %>
 
-        <%= the_director.name %>
+        <% if the_director == nil %>
+          Uh oh! We are unable to locate a director.
+        <% else %>
+         <%= the_director.name %>
+        <% end %>
       </td>
 
       <td>
