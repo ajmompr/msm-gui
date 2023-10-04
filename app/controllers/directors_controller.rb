@@ -1,4 +1,23 @@
 class DirectorsController < ApplicationController
+  def update
+    # Retrieve director ID
+    director_id = params.fetch("an_id")
+    # Locate matching relation
+    matching_records = Director.where( :id => director_id)
+    # Pop out correct relation
+    the_director = matching_records.at(0)
+    # Overwrite values
+    the_director.name = params.fetch("query_name")
+    the_director.dob = params.fetch("query_dob")
+    the_director.bio = params.fetch("query_bio")
+    the_director.image = params.fetch("query_image")
+    # Save
+    the_director.save
+
+    # Redirect to director details page
+    redirect_to("/directors/#{the_director.id}")
+  end
+
   def destroy
     # Retrieve the Director ID value
     the_id = params.fetch("an_id")
